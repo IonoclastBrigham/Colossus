@@ -1,0 +1,190 @@
+// ColossusParser.lmn
+// Colossus compiler
+// LMNO input for syntactical parser for Colossus language
+
+
+%name Colossus
+
+
+// C++ code area ///////////////////////////////////////////////////////////////
+
+%include
+{
+
+	#include <iostream>
+		using std::cout;
+		using std::cerr;
+		using std::endl;
+
+	#include "Token.h"
+	void token_destructor(Token* t);
+
+} // include
+
+%code
+{
+
+	void token_destructor(Token* t)
+	{
+		delete t;
+	}
+
+} // code
+
+// options /////////////////////////////////////////////////////////////////////
+
+%token_type {Token*}
+%token_prefix TOK_
+%token_destructor { token_destructor($$); } // defined above
+
+// disambiguation:
+// later lines are higher precedence.
+// left == reduce.
+// right == shift.
+// nonassoc == specifies precedence only.
+%right STATIC CONST.
+%left IS.
+%left KEYWORDOR.
+%left PLUS MINUS OR .
+%left STAR SLASH PERCENT AND LBRACKET.
+%right LPAREN.
+%left DOT.
+%right NOT.
+%left ELSE.
+%right IF.
+
+%parse_accept { cout << "Compilation complete." << endl; }
+%syntax_error {cerr << "error: " << yyminor.yy0->line << ": bad syntax" <<endl;}
+
+// grammar reductions //////////////////////////////////////////////////////////
+
+main		-> statements.
+statements	-> /* nothing */.
+statements	-> statements stmnt terminator.
+
+terminator -> NEWLINE.
+terminator -> SEMICOLON.
+
+// kinds of statements
+stmnt -> block.
+stmnt -> classdef.
+stmnt -> interfacedef.
+stmnt -> mixindef.
+stmnt -> declaration.
+stmnt -> assignstmnt.
+stmnt -> ifstmnt.
+stmnt -> switchstmnt.
+stmnt -> forstmnt.
+stmnt -> foreachstmnt.
+stmnt -> foreverstmnt.
+stmnt -> loopstmnt.
+stmnt -> whilestmnt.
+stmnt -> dowhilestmnt.
+stmnt -> untilstmnt.
+stmnt -> dountilstmnt.
+stmnt -> trycatch.
+stmnt -> throwstmnt.
+stmnt -> expr.
+stmnt -> return.
+
+block -> LBRACE statements RBRACE.
+
+// class definitions
+classdef	-> CLASS IDENT inheritence LBRACE classbody RBRACE.
+inheritence	-> /* empty */.
+inheritence	-> COLON ancestry.
+ancestry	-> /* empty */.
+ancestry	-> ancestry ancestor.
+ancestor	-> IDENT.
+ancestor	-> IDENT LPAREN IDENT RPAREN.
+classbody	-> /* empty */.
+//classbody	-> classbody member terminator.
+//member		-> access COLON.
+//member		-> fineaccess methoddef.
+//member		-> fineaccess declaration.
+//access		-> PUBLIC.
+//access		-> PROTECTED.
+//access		-> PRIVATE.
+//fineaccess 	-> /* empty */.		// optional access spec
+//fineaccess	-> access.
+//methoddef	-> IDENT IDENT LPAREN params RPAREN block.
+//params		-> /* empty */.
+//params		-> paramlist.
+//paramlist	-> formal.
+//paramlist	-> paramlist COMMA formal.
+//formal		-> IDENT IDENT.
+
+interfacedef -> INTERFACE IDENT inheritence LBRACE classbody RBRACE.
+mixindef -> MIXIN IDENT inheritence LBRACE classbody RBRACE.
+
+// local declarations
+declaration -> IDENT IDENT initializer.
+declaration -> STATIC IDENT IDENT initializer.
+declaration -> CONST IDENT IDENT initializer.
+declaration -> CONST STATIC IDENT IDENT initializer.
+declaration -> STATIC CONST IDENT IDENT initializer.
+initializer -> EQUALS expr.
+initializer -> LPAREN args RPAREN. // constructor syntax
+args -> /* nothing */.
+args -> arglist.
+arglist -> expr.
+arglist -> arglist COMMA expr.
+
+// assignstmnt syntax
+assignstmnt -> expr EQUALS expr.
+
+// conditional
+ifstmnt -> IF LPAREN expr RPAREN stmnt.
+ifstmnt -> IF LPAREN expr RPAREN stmnt ELSE stmnt.
+switchstmnt ->	SWITCH LPAREN expr RPAREN
+				LBRACE cases RBRACE.
+cases -> /* nothing */.
+cases -> cases CASE expr terminator statements.
+cases -> cases CASE terminator statements. // empty case label => default
+
+// looping
+forstmnt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt.
+forstmnt -> FOR LPAREN expr COLON expr RPAREN stmnt.
+foreachstmnt -> FOREACH LPAREN expr COLON expr RPAREN stmnt.
+foreverstmnt -> FOREVER stmnt.
+loopstmnt -> LOOP LPAREN expr RPAREN stmnt.
+whilestmnt -> WHILE LPAREN expr RPAREN stmnt.
+dowhilestmnt -> DO stmnt WHILE LPAREN expr RPAREN.
+untilstmnt -> UNTIL LPAREN expr RPAREN stmnt.
+dountilstmnt -> DO stmnt UNTIL LPAREN expr RPAREN.
+
+// exception handling
+trycatch -> TRY stmnt CATCH LPAREN stmnt RPAREN stmnt.
+throwstmnt -> THROW expr.
+
+// arithmetic expressions
+expr -> expr PLUS expr.
+expr -> expr MINUS expr.
+expr -> expr STAR expr.
+expr -> expr SLASH expr.
+expr -> MINUS expr.
+expr -> INT.
+expr -> FLOAT.
+expr -> LPAREN expr RPAREN.
+
+// logical expressions
+expr -> expr OR expr.
+expr -> expr AND expr.
+expr -> NOT expr.
+expr -> expr IS alternatives.
+alternatives -> expr KEYWORDOR expr.
+alternatives -> alternatives KEYWORDOR alternatives.
+expr -> TRUE.
+expr -> FALSE.
+
+// class and object expressions
+expr -> IDENT LPAREN args RPAREN.			// constructor call
+expr -> IDENT.								// object reference
+expr -> expr DOT IDENT.						// qualified member reference
+expr -> expr DOT IDENT LPAREN args RPAREN.	// qualified mehtod call
+expr -> expr LBRACKET expr RBRACKET.		// array/container access
+
+// method return
+return -> RETURN retval.
+retval -> /* empty */.
+retval -> expr.

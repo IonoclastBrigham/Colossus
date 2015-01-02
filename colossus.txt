@@ -1,0 +1,379 @@
+Colossus -	"Colossus Object Language On Separate Similar User Systems"
+			or:
+			"C'lasses"
+--------------------------------------------------------------------
+
+
+Design Constraints
+------------------
+	1. Include anything that is common and useful in 2 or more target languages
+	2. Exclude anything that is too language-specific to cleanly port
+	3. Normalize and simplify any features and syntax to make programming easier
+	4. KISS, but do The Right Thing
+	5. Allow the programmer to add any facilities he needs
+	6. MAKE MULTIPLATFORM PROGRAMMING AS FAST AND EASY AS POSSIBLE
+
+
+Implementation Notes
+--------------------
+prototype in c++:
+	[√] refcounted pointer
+	[√] garbage collector
+	[ ] thread object
+Self-host, export to languages and build a simple IDE?
+
+
+General Features
+----------------
+line-based/context-based statement termination
+	semicolons only needed for multi-statement lines
+	'\n' is a "soft-semicolon" that recognizes compound statements across lines
+data protection
+	everything defaults to public (methods, data, inheritance)
+	both fine- and coarse-grained access control (C++ style vs java style)
+	can override access (public member in a "private block")
+nested comments
+	allow code sections with comments to be more easily commented out
+	looks for matched pairs of begin/end tokens before leaving "comment mode"
+	/* /* This line won't execute */ foo.print() */
+helpful messages
+	language hints for experienced programmers
+		FooBar.cls: warning: You are terminating lines with semicolons ';'.
+		FooBar.cls: warning: Did you know this is unnecessary in Colossus?
+	symbol lookup failure
+		do case-insensitive, longest-match lookup
+		a hit is still a compile error 
+		FooBar.cls (27): error: "foo" is undefined; did you mean "Foo"?
+modular, extensible (new language features, new target languages)
+range type, range notation
+	precomputed at compile time, when possible
+	0 .. -20	// [0, -20], inclusive on both ends, descending
+	5 .. limit
+	x .. y
+	range r = head .. offset
+	int i = r[indexer]
+looping:
+	for(init; cond; inc) {...} // standard C for-loop
+	for(var : range) {...} // shorcut for common case
+	for(var : collection) {...}
+	forever { ... }	// while(true) ...
+	while(cond) {...}
+	until(cond) {...} // while(!cond) ...
+	do {...} while(cond)
+	do {...} until(cond)
+	loop(count) {...} // iterate count times, no indexer
+multiple condition shortcuts
+	if(a == 0 || a == 1 || a == 8) {...}
+	// becomes...
+	if(a is 0 or 1 or 8) {...}
+	// which is equivalent to...
+	switch(a)
+	{
+	case 0:
+	case 1:
+	case 8:
+		...
+		break;
+	}
+	// ... but allows complex expressions as conditions.
+	// Or...
+	if(a is 0 or 1 or 2 or ... or 10) {...}
+	// can be further compressed as...
+	if(a in 0..10)
+booleans
+	0 is false
+	null is false
+	false is false
+	other is true
+simplified switch syntax
+	switch(expr)
+	{
+	case a, b, c // no colon necessary, as labels are not supported
+		moo()
+		// no break necessary
+	case d
+		baa()
+	case		// blank case => default
+		meow()
+	}
+implement tail-recusrion as a loop? (LISP style)
+everything is an object? (common base, stub classes)
+simple class Property mechanism (C# style)
+	identical semantics to raw member var access, externally
+	class Foo
+	{
+		property int x
+		{
+			// get not specified, normal member access
+			set { x = 2 * val; accesses++ }
+		}
+		int y // normal member data access
+	}
+single inheritence, inferfaces, mixins?
+mixins
+	you neither inherit nor have a mixin (not is-a or has-a). 
+	implements interfaces by aggregation (is-made-of).
+	doesn't violate single inheritance.
+	a mixin implements one interface, can only publicly implement its methods.
+	mixins are not required to implement full interface.
+	useful to implement many partially compatible classes (stl size() e.g.).
+	blackbox with internal namespace
+		no data name collisions
+		class level data with the same name overrides, in class code
+		explicitly access mixin's data via "MixinName.member" syntax
+		public interface collisions with other mixins are compile errors
+	// A general infterface that defines the Mac experience
+	interface MacIntosh
+	{
+		void Compute()
+		bool MakeYouHappy()
+	}
+	// A component that can implement part of the Mac experience
+	mixin MotherBoard : MacIntosh
+	{
+		bool Compute()
+	}
+	// An implementation of the Mac experience.
+	// Implements MacIntosh, partially implemented by MotherBoard.
+	// Note that a MacBookPro is not a MotherBoard, nor does
+	// it have and use a MotherBoard anymore than you have and
+	// use your heart or your brain.
+	class MacBookPro : MacIntosh(MotherBoard)
+	{
+		void MakeyouHappy() {...}
+	}
+optional interface members?
+	auto-filled-in stubs
+	returns void or null automatically?
+	throws exceptions?
+	specify "optional" in interface vs "stub" in implementation?
+singleton keyword for class definitions
+access to all instances of a class
+	declare an automatically-handled collection?
+	"all" operator for acccessing implicitly defined collection?
+	access from inside or outside the class
+	declare instance access as private?
+threads
+	thread class
+		pause()
+		restart()
+		wait()
+		message passing interface?
+	thread keyword for method definitions
+		implicitly static?
+		must take explicit class instance pointer to get at member data?
+		must be declared to return void
+		actual return type is thread handle
+	acquire/release keywords for fine grained mutex access to data
+	rendezvous keyword the meet up with an external mythread.wait()?
+	can spawn a thread for a single statement
+		Thread t = @{ if(scene.RenderSomethingHuge()) MsgBox("Success!") }
+		// ...
+		t.wait() // sync back up with render job
+exceptions
+	stub classes for target native exception types
+	try/catch don't need braces for one-liners
+"swaperator": x <=> y // this can be highly optimized for some types
+support binary formatting for integer literals (0b10110011)
+pass-by-reference, assign by value
+	C++ reference semantics, but allows null
+	assign &var to copy the reference instead of the value
+declaration and allocation
+	always  garbage collected
+	do away with the new keyword
+	Foo f1;		// this is a null reference
+	Foo f2();	// this is an allocated reference
+	f2.print();	// A-ok
+	f1.print();	// compile warning, runtime null ref exception
+	f1 = Foo();	// initializes reference to allocated address
+	f1.print();	// ok, this is fine
+method parameters
+	default params, a-la C++
+	optionally, args by name, a-la obj-c / smalltalk?
+		syntax like C++ initializer list
+		allows for non-final default parameters:
+		Foo.bar(int a, int b, int c = 0, string msg)
+		// ...can be called as...
+		foo.bar : a(1), msg("woah! out of order!"), b(2) // c defaults to 0
+auto-initializer params
+	// @x and @y automatically used to initialize instance members x and y
+	class Point
+	{
+	public:
+		Point(int @x, int @y) {}
+	private:
+		int x, y;
+	}
+proxy methods for exporting "has-a" interfaces
+	class Foo
+	{
+		public proxy property int size {mcontainer}
+		private Container mcontainer
+	}
+	...
+	int x = foo.size
+anonymous class syntax?
+	override operator() to create in-place functor/lambdas!
+global data
+	static Global
+	{
+		int somedata
+		float someotherdata
+	}
+	Global.somedata = 35;
+	Global.someotherdata.print()
+type management
+	polymorphic typecasting (auto dynamic_cast)?
+	"The dynamic_cast operator requires runtime type information (RTTI) to be
+	generated, which [will automatically be done when it is used in your code]."
+	Hash class signature
+	interface iface { foo() }
+	class base : iface { foo() {...} int x }
+	class impl1 : base { bar() {...} }
+	class impl2 : base { baz() {...} }
+	container<iface> c()
+	...
+	iface i1 = c[i]
+	iface 12 = c[j]
+	i1.foo() // valid iface method, calls appropriate foo() implementation
+	i1.bar() // compile error; we know it's an impl1, but iface has no bar
+	i1.cast().bar() // automatically recasts reference to underlying type
+	i2.cast().baz() // this works too, if we know it's an impl2 object
+
+
+Cross-Platform Features
+-----------------------
+compiles to C++, Java, C#
+	output code has comments with original source + linenumber?
+prefer to wrap platform details in common interface, rather than client code
+top level enclaves represent a language, implemented as pluggable backend.
+backend inherits from a base class, overrides only those specialized portions.
+three main enclaves: C++, Java, C#.
+preprocess / macro / meta-compile enclave
+	Code in this section controls compilation
+	compiler directives
+	source manipulation
+	conditional compilation beyond enclave functionality
+	special set of classes and variables
+	implement templates via this?
+standard classes
+	// defines a standard class that gets instantiated in each language
+	class foo
+	{
+		void doit()
+		{
+			// common code
+			...
+
+			// drop into "assembly"
+			Cplusplus {...}
+			Java {...}
+			Csharp {...}
+		}
+	}
+inline classes
+	// inline classes are placeholders, define how usage is compiled.
+	// contains no Colossus executable code or member data.
+	// use when target languages all have the mechanism in place.
+	// outputs into a block. return vals go into a local temp var before use.
+	// defines a simple compatibility "translator"; best for just a few calls.
+	// think of it as an object oriented, typechecked macro
+	inline class Printer
+	{
+		Cplusplus
+		{
+			// calling Printer.Print("Hello, World!\n")...
+			static void Print(String s)
+			{
+				// ...compiles to:
+				cout << s; // note the necessity of the semicolon
+			}
+		}
+		Java
+		{
+			static void Print(String s)
+			{
+				System.out.print(s);
+			}
+		}
+		...
+	}
+sub-enclaves
+	e.g. C++.allegro, C++.iphone
+	enclave environments configurable in enclave files.
+	sub-enclaves inherit code you specify:
+	// allegro.clave
+	// environment for C++/allegro buildtarget
+
+	// first line of code must be an enclave directive.
+	// this is scoped for the entire file.
+	enclave allegro : Cplusplus // inherits environment from C++
+
+	// these are recognized as C++ code and placed into a global header
+	global
+	{
+		#include "util/container.h"
+		#include <alleg/allegro.h>
+		#include <iostream>
+		 using std::cerr;
+		 using std::endl;
+		 using std::fstream;
+	}
+
+	// inline subenclave, Cplusplus.allegro.win32
+	// automatically inherits from outter enclave
+	enclave win32
+	{
+		global
+		{
+			#define WIN32_LEAN_AND_MEAN
+			#include <allegro/winalleg.h>
+		}
+	}
+
+
+Colossus test program
+---------------------
+/*
+ *  SelectionSort.cls
+ * Copyright ©2009-2010 Brigham Toskin.
+ *
+ */
+ 
+import IO
+
+class SelectionSortApp : Application
+{
+	int main(string args[])
+	{
+		// Use args[1] parsed as an int to dimension the array.
+		// Initializes each cell with a random value from -10 to 10, inclusive,
+		// using the allocated Rand object. 
+		int array[args[1].AsInt](Rand(-10 .. 10))
+
+		// runs the private util method
+		selection_sort(array)
+
+		// what should the IO library look like?
+		printf("Sorted results: [")
+		foreach(int val : array)
+			printf("%d, ", val)
+		printf("]\n")
+	}
+
+	private void selection_sort(int x[])
+	{
+		int head, current, smallest
+		
+		for(head in 0 .. x.size)
+		{
+			smallest = head
+			for(current : head .. x.size)
+			{
+				if(x[current] < x[smallest])
+					smallest = current
+			}
+			x[head] <=> x[smallest] // spawerator!
+		}
+	}
+}

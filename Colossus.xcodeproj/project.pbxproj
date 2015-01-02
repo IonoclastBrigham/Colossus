@@ -1,0 +1,306 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 45;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4B22CD3711F1283A00EE369E /* CXE_Cpp.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B22CD3611F1283A00EE369E /* CXE_Cpp.cpp */; };
+		4B4E1F4611B05D1E003CBC1F /* Pointer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E1F4511B05D1E003CBC1F /* Pointer.cpp */; };
+		4B4E206511B234C4003CBC1F /* Exception.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E206311B234C4003CBC1F /* Exception.cpp */; };
+		4B4E209B11B24661003CBC1F /* gc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B4E209A11B24661003CBC1F /* gc.cpp */; };
+		4B59FD4B11F3C3D400BC429F /* CXE_Java.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FD4A11F3C3D400BC429F /* CXE_Java.cpp */; };
+		4B59FDAC11F444E300BC429F /* CXE_Cs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4B59FDAB11F444E300BC429F /* CXE_Cs.cpp */; };
+		4BE0524211EEF7A900C35C56 /* CXE_Test.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BE0524111EEF7A900C35C56 /* CXE_Test.cpp */; };
+		4BE052AB11EFBD3D00C35C56 /* CXE_Common.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4BE052AA11EFBD3D00C35C56 /* CXE_Common.cpp */; };
+		4BEA2C6911C3163200F90703 /* ColossusParser.lmn in Sources */ = {isa = PBXBuildFile; fileRef = 4BEA2C6811C3163200F90703 /* ColossusParser.lmn */; };
+		4BEB64DC11BB35500050CF8A /* ColossusScanner.cpp.rl in Sources */ = {isa = PBXBuildFile; fileRef = 4BEB64D511BB34790050CF8A /* ColossusScanner.cpp.rl */; };
+		8DD76F6A0486A84900D96B5E /* Colossus.1 in CopyFiles */ = {isa = PBXBuildFile; fileRef = C6859E8B029090EE04C91782 /* Colossus.1 */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXBuildRule section */
+		4B99E63411C470AF00EEE188 /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			fileType = sourcecode.lex;
+			isEditable = 1;
+			outputFiles = (
+				"$(INPUT_FILE_DIR)/$(INPUT_FILE_BASE).cpp",
+			);
+			script = "LMNO=/usr/local/bin/lmno\n$LMNO ${INPUT_FILE_BASE}.lmn";
+		};
+		4BEB64CC11BB25E80050CF8A /* PBXBuildRule */ = {
+			isa = PBXBuildRule;
+			compilerSpec = com.apple.compilers.proxy.script;
+			filePatterns = "*.rl";
+			fileType = pattern.proxy;
+			isEditable = 1;
+			outputFiles = (
+				"$(DERIVED_FILES_DIR)/$(INPUT_FILE_BASE)",
+				"$(DERIVED_FILES_DIR)/$(INPUT_FILE_BASE).dot",
+			);
+			script = "RAGEL=/usr/local/bin/ragel\n$RAGEL ${INPUT_FILE_BASE}.rl --error-format=gnu -G2 -o ${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}\n$RAGEL ${INPUT_FILE_BASE}.rl -V -o ${DERIVED_FILES_DIR}/${INPUT_FILE_BASE}.dot";
+		};
+/* End PBXBuildRule section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8DD76F690486A84900D96B5E /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 8;
+			dstPath = /usr/share/man/man1/;
+			dstSubfolderSpec = 0;
+			files = (
+				8DD76F6A0486A84900D96B5E /* Colossus.1 in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 1;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		4B10F9D911B3907E0079868E /* util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = util.h; sourceTree = "<group>"; };
+		4B22CD3511F1283A00EE369E /* CXE_Cpp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXE_Cpp.h; sourceTree = "<group>"; };
+		4B22CD3611F1283A00EE369E /* CXE_Cpp.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXE_Cpp.cpp; sourceTree = "<group>"; };
+		4B22CD5F11F1349200EE369E /* CXE_Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXE_Common.h; sourceTree = "<group>"; };
+		4B4E1F4311B05B23003CBC1F /* colossus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = colossus.txt; sourceTree = "<group>"; };
+		4B4E1F4411B05D1E003CBC1F /* Pointer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Pointer.h; sourceTree = "<group>"; };
+		4B4E1F4511B05D1E003CBC1F /* Pointer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Pointer.cpp; sourceTree = "<group>"; };
+		4B4E1F5E11B06061003CBC1F /* gc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = gc.h; sourceTree = "<group>"; };
+		4B4E1F9111B06748003CBC1F /* defs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = defs.h; sourceTree = "<group>"; };
+		4B4E206311B234C4003CBC1F /* Exception.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Exception.cpp; sourceTree = "<group>"; };
+		4B4E206411B234C4003CBC1F /* Exception.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exception.h; sourceTree = "<group>"; };
+		4B4E209A11B24661003CBC1F /* gc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = gc.cpp; sourceTree = "<group>"; };
+		4B59FD4911F3C3D400BC429F /* CXE_Java.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXE_Java.h; sourceTree = "<group>"; };
+		4B59FD4A11F3C3D400BC429F /* CXE_Java.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXE_Java.cpp; sourceTree = "<group>"; };
+		4B59FDAA11F444E300BC429F /* CXE_Cs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXE_Cs.h; sourceTree = "<group>"; };
+		4B59FDAB11F444E300BC429F /* CXE_Cs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXE_Cs.cpp; sourceTree = "<group>"; };
+		4B99E64211C4741200EEE188 /* ColossusScanner.cpp.dot */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = ColossusScanner.cpp.dot; path = build/Colossus.build/Debug/Colossus.build/DerivedSources/ColossusScanner.cpp.dot; sourceTree = "<group>"; };
+		4B99E64311C4749D00EEE188 /* ColossusParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ColossusParser.h; sourceTree = "<group>"; };
+		4BE051DC11E67F3600C35C56 /* CXE.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CXE.h; sourceTree = "<group>"; };
+		4BE0524111EEF7A900C35C56 /* CXE_Test.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXE_Test.cpp; sourceTree = "<group>"; };
+		4BE052AA11EFBD3D00C35C56 /* CXE_Common.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = CXE_Common.cpp; sourceTree = "<group>"; };
+		4BEA2C6411C0D1C000F90703 /* Token.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Token.h; sourceTree = "<group>"; };
+		4BEA2C6811C3163200F90703 /* ColossusParser.lmn */ = {isa = PBXFileReference; explicitFileType = sourcecode.lex; fileEncoding = 4; path = ColossusParser.lmn; sourceTree = "<group>"; };
+		4BEB64D511BB34790050CF8A /* ColossusScanner.cpp.rl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ColossusScanner.cpp.rl; sourceTree = "<group>"; };
+		8DD76F6C0486A84900D96B5E /* Colossus */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = Colossus; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6859E8B029090EE04C91782 /* Colossus.1 */ = {isa = PBXFileReference; lastKnownFileType = text.man; path = Colossus.1; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DD76F660486A84900D96B5E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		08FB7794FE84155DC02AAC07 /* Colossus */ = {
+			isa = PBXGroup;
+			children = (
+				08FB7795FE84155DC02AAC07 /* Source */,
+				C6859E8C029090F304C91782 /* Documentation */,
+				1AB674ADFE9D54B511CA2CBB /* Products */,
+			);
+			name = Colossus;
+			sourceTree = "<group>";
+		};
+		08FB7795FE84155DC02AAC07 /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				4B10F9D911B3907E0079868E /* util.h */,
+				4B4E206311B234C4003CBC1F /* Exception.cpp */,
+				4B4E206411B234C4003CBC1F /* Exception.h */,
+				4B4E1F9111B06748003CBC1F /* defs.h */,
+				4B4E209A11B24661003CBC1F /* gc.cpp */,
+				4B4E1F5E11B06061003CBC1F /* gc.h */,
+				4B4E1F4411B05D1E003CBC1F /* Pointer.h */,
+				4B4E1F4511B05D1E003CBC1F /* Pointer.cpp */,
+				4BEA2C6811C3163200F90703 /* ColossusParser.lmn */,
+				4BEB64D511BB34790050CF8A /* ColossusScanner.cpp.rl */,
+				4BEA2C6411C0D1C000F90703 /* Token.h */,
+				4BE052AA11EFBD3D00C35C56 /* CXE_Common.cpp */,
+				4B22CD5F11F1349200EE369E /* CXE_Common.h */,
+				4BE051DC11E67F3600C35C56 /* CXE.h */,
+				4B59FD4911F3C3D400BC429F /* CXE_Java.h */,
+				4B59FD4A11F3C3D400BC429F /* CXE_Java.cpp */,
+				4B59FDAA11F444E300BC429F /* CXE_Cs.h */,
+				4B59FDAB11F444E300BC429F /* CXE_Cs.cpp */,
+				4B22CD3511F1283A00EE369E /* CXE_Cpp.h */,
+				4B22CD3611F1283A00EE369E /* CXE_Cpp.cpp */,
+				4BE0524111EEF7A900C35C56 /* CXE_Test.cpp */,
+			);
+			name = Source;
+			sourceTree = "<group>";
+		};
+		1AB674ADFE9D54B511CA2CBB /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DD76F6C0486A84900D96B5E /* Colossus */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		C6859E8C029090F304C91782 /* Documentation */ = {
+			isa = PBXGroup;
+			children = (
+				4B4E1F4311B05B23003CBC1F /* colossus.txt */,
+				4B99E64311C4749D00EEE188 /* ColossusParser.h */,
+				4B99E64211C4741200EEE188 /* ColossusScanner.cpp.dot */,
+				C6859E8B029090EE04C91782 /* Colossus.1 */,
+			);
+			name = Documentation;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DD76F620486A84900D96B5E /* Colossus */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Colossus" */;
+			buildPhases = (
+				8DD76F640486A84900D96B5E /* Sources */,
+				8DD76F660486A84900D96B5E /* Frameworks */,
+				8DD76F690486A84900D96B5E /* CopyFiles */,
+			);
+			buildRules = (
+				4B99E63411C470AF00EEE188 /* PBXBuildRule */,
+				4BEB64CC11BB25E80050CF8A /* PBXBuildRule */,
+			);
+			dependencies = (
+			);
+			name = Colossus;
+			productInstallPath = "$(HOME)/bin";
+			productName = Colossus;
+			productReference = 8DD76F6C0486A84900D96B5E /* Colossus */;
+			productType = "com.apple.product-type.tool";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		08FB7793FE84155DC02AAC07 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+			};
+			buildConfigurationList = 1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Colossus" */;
+			compatibilityVersion = "Xcode 3.1";
+			developmentRegion = English;
+			hasScannedForEncodings = 1;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 08FB7794FE84155DC02AAC07 /* Colossus */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DD76F620486A84900D96B5E /* Colossus */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DD76F640486A84900D96B5E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4BEB64DC11BB35500050CF8A /* ColossusScanner.cpp.rl in Sources */,
+				4B4E1F4611B05D1E003CBC1F /* Pointer.cpp in Sources */,
+				4B4E206511B234C4003CBC1F /* Exception.cpp in Sources */,
+				4B4E209B11B24661003CBC1F /* gc.cpp in Sources */,
+				4BEA2C6911C3163200F90703 /* ColossusParser.lmn in Sources */,
+				4BE0524211EEF7A900C35C56 /* CXE_Test.cpp in Sources */,
+				4BE052AB11EFBD3D00C35C56 /* CXE_Common.cpp in Sources */,
+				4B22CD3711F1283A00EE369E /* CXE_Cpp.cpp in Sources */,
+				4B59FD4B11F3C3D400BC429F /* CXE_Java.cpp in Sources */,
+				4B59FDAC11F444E300BC429F /* CXE_Cs.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		1DEB923208733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				COPY_PHASE_STRIP = NO;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_ENABLE_FIX_AND_CONTINUE = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = Colossus;
+				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+			};
+			name = Debug;
+		};
+		1DEB923308733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				INSTALL_PATH = /usr/local/bin;
+				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				PRODUCT_NAME = Colossus;
+				SDKROOT = macosx;
+				STRINGS_FILE_OUTPUT_ENCODING = "UTF-8";
+			};
+			name = Release;
+		};
+		1DEB923608733DC60010E9CD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Debug;
+		};
+		1DEB923708733DC60010E9CD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				PREBINDING = NO;
+				SDKROOT = macosx10.6;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		1DEB923108733DC60010E9CD /* Build configuration list for PBXNativeTarget "Colossus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923208733DC60010E9CD /* Debug */,
+				1DEB923308733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		1DEB923508733DC60010E9CD /* Build configuration list for PBXProject "Colossus" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				1DEB923608733DC60010E9CD /* Debug */,
+				1DEB923708733DC60010E9CD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 08FB7793FE84155DC02AAC07 /* Project object */;
+}

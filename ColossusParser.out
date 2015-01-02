@@ -1,0 +1,4570 @@
+ State 0:
+		  main -> * statements
+	  (1) statements -> *
+		  statements -> * statements stmnt terminator
+
+                          main accept
+                    statements shift  1
+                     {default} reduce 1
+
+State 1:
+	  (0) main -> statements *
+		  statements -> statements * stmnt terminator
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                             $ reduce 0
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  2
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 2:
+		  statements -> statements stmnt * terminator
+		  terminator -> * NEWLINE
+		  terminator -> * SEMICOLON
+
+                       NEWLINE shift  4
+                     SEMICOLON shift  5
+                    terminator shift  3
+
+State 3:
+	  (2) statements -> statements stmnt terminator *
+
+                     {default} reduce 2
+
+State 4:
+	  (3) terminator -> NEWLINE *
+
+                     {default} reduce 3
+
+State 5:
+	  (4) terminator -> SEMICOLON *
+
+                     {default} reduce 4
+
+State 6:
+	  (5) stmnt -> block *
+
+                     {default} reduce 5
+
+State 7:
+	  (6) stmnt -> classdef *
+
+                     {default} reduce 6
+
+State 8:
+	  (7) stmnt -> interfacedef *
+
+                     {default} reduce 7
+
+State 9:
+	  (8) stmnt -> mixindef *
+
+                     {default} reduce 8
+
+State 10:
+	  (9) stmnt -> declaration *
+
+                     {default} reduce 9
+
+State 11:
+	 (10) stmnt -> assignstmnt *
+
+                     {default} reduce 10
+
+State 12:
+	 (11) stmnt -> ifstmnt *
+
+                     {default} reduce 11
+
+State 13:
+	 (12) stmnt -> switchstmnt *
+
+                     {default} reduce 12
+
+State 14:
+	 (13) stmnt -> forstmnt *
+
+                     {default} reduce 13
+
+State 15:
+	 (14) stmnt -> foreachstmnt *
+
+                     {default} reduce 14
+
+State 16:
+	 (15) stmnt -> foreverstmnt *
+
+                     {default} reduce 15
+
+State 17:
+	 (16) stmnt -> loopstmnt *
+
+                     {default} reduce 16
+
+State 18:
+	 (17) stmnt -> whilestmnt *
+
+                     {default} reduce 17
+
+State 19:
+	 (18) stmnt -> dowhilestmnt *
+
+                     {default} reduce 18
+
+State 20:
+	 (19) stmnt -> untilstmnt *
+
+                     {default} reduce 19
+
+State 21:
+	 (20) stmnt -> dountilstmnt *
+
+                     {default} reduce 20
+
+State 22:
+	 (21) stmnt -> trycatch *
+
+                     {default} reduce 21
+
+State 23:
+	 (22) stmnt -> throwstmnt *
+
+                     {default} reduce 22
+
+State 24:
+	 (23) stmnt -> expr *
+		  assignstmnt -> expr * EQUALS expr
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        EQUALS shift  25
+                     {default} reduce 23
+
+State 25:
+		  assignstmnt -> expr EQUALS * expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  26
+
+State 26:
+	 (47) assignstmnt -> expr EQUALS expr *
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 47
+
+State 27:
+		  expr -> * expr PLUS expr
+		  expr -> expr PLUS * expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  28
+
+State 28:
+		  expr -> expr * PLUS expr
+	 (65) expr -> expr PLUS expr *
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 65
+
+State 29:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> expr MINUS * expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  30
+
+State 30:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+	 (66) expr -> expr MINUS expr *
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 66
+
+State 31:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> expr STAR * expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  32
+
+State 32:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+	 (67) expr -> expr STAR expr *
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                           DOT shift  43
+                     {default} reduce 67
+
+State 33:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> expr SLASH * expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  34
+
+State 34:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+	 (68) expr -> expr SLASH expr *
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                           DOT shift  43
+                     {default} reduce 68
+
+State 35:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> expr OR * expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  36
+
+State 36:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+	 (73) expr -> expr OR expr *
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 73
+
+State 37:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> expr AND * expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  38
+
+State 38:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+	 (74) expr -> expr AND expr *
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                           DOT shift  43
+                     {default} reduce 74
+
+State 39:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> expr IS * alternatives
+		  alternatives -> * expr KEYWORDOR expr
+		  alternatives -> * alternatives KEYWORDOR alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  40
+                  alternatives shift  70
+
+State 40:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  alternatives -> expr * KEYWORDOR expr
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                     KEYWORDOR shift  41
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+
+State 41:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  alternatives -> expr KEYWORDOR * expr
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  42
+
+State 42:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+	 (77) alternatives -> expr KEYWORDOR expr *
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 77
+
+State 43:
+		  expr -> expr DOT * IDENT
+		  expr -> expr DOT * IDENT LPAREN args RPAREN
+
+                         IDENT shift  44
+
+State 44:
+	 (83) expr -> expr DOT IDENT *
+		  expr -> expr DOT IDENT * LPAREN args RPAREN
+
+                        LPAREN shift  45
+                     {default} reduce 83
+
+State 45:
+	 (43) args -> *
+		  args -> * arglist
+		  arglist -> * expr
+		  arglist -> * arglist COMMA expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> expr DOT IDENT LPAREN * args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                        RPAREN reduce 43
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  65
+                          args shift  68
+                       arglist shift  46
+
+State 46:
+	 (44) args -> arglist *
+		  arglist -> arglist * COMMA expr
+
+                        RPAREN reduce 44
+                         COMMA shift  47
+
+State 47:
+		  arglist -> arglist COMMA * expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  48
+
+State 48:
+	 (46) arglist -> arglist COMMA expr *
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 46
+
+State 49:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  expr -> expr LBRACKET * expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  50
+
+State 50:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+		  expr -> expr LBRACKET expr * RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                      RBRACKET shift  51
+
+State 51:
+	 (85) expr -> expr LBRACKET expr RBRACKET *
+
+                     {default} reduce 85
+
+State 52:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> MINUS * expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  53
+
+State 53:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+	 (69) expr -> MINUS expr *
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 69
+
+State 54:
+	 (70) expr -> INT *
+
+                     {default} reduce 70
+
+State 55:
+	 (71) expr -> FLOAT *
+
+                     {default} reduce 71
+
+State 56:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> LPAREN * expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  57
+
+State 57:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> LPAREN expr * RPAREN
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  58
+
+State 58:
+	 (72) expr -> LPAREN expr RPAREN *
+
+                     {default} reduce 72
+
+State 59:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> NOT * expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  60
+
+State 60:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+	 (75) expr -> NOT expr *
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                     {default} reduce 75
+
+State 61:
+	 (79) expr -> TRUE *
+
+                     {default} reduce 79
+
+State 62:
+	 (80) expr -> FALSE *
+
+                     {default} reduce 80
+
+State 63:
+		  expr -> IDENT * LPAREN args RPAREN
+	 (82) expr -> IDENT *
+
+                        LPAREN shift  64
+                     {default} reduce 82
+
+State 64:
+	 (43) args -> *
+		  args -> * arglist
+		  arglist -> * expr
+		  arglist -> * arglist COMMA expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> IDENT LPAREN * args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                        RPAREN reduce 43
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  65
+                          args shift  66
+                       arglist shift  46
+
+State 65:
+	 (45) arglist -> expr *
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 45
+
+State 66:
+		  expr -> IDENT LPAREN args * RPAREN
+
+                        RPAREN shift  67
+
+State 67:
+	 (81) expr -> IDENT LPAREN args RPAREN *
+
+                     {default} reduce 81
+
+State 68:
+		  expr -> expr DOT IDENT LPAREN args * RPAREN
+
+                        RPAREN shift  69
+
+State 69:
+	 (84) expr -> expr DOT IDENT LPAREN args RPAREN *
+
+                     {default} reduce 84
+
+State 70:
+	 (76) expr -> expr IS alternatives *
+		  alternatives -> alternatives * KEYWORDOR alternatives
+
+                     KEYWORDOR shift  71
+                     {default} reduce 76
+
+State 71:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  alternatives -> * expr KEYWORDOR expr
+		  alternatives -> * alternatives KEYWORDOR alternatives
+		  alternatives -> alternatives KEYWORDOR * alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  40
+                  alternatives shift  72
+
+State 72:
+		  alternatives -> alternatives * KEYWORDOR alternatives
+	 (78) alternatives -> alternatives KEYWORDOR alternatives *
+
+                     {default} reduce 78
+
+State 73:
+	 (24) stmnt -> return *
+
+                     {default} reduce 24
+
+State 74:
+	  (1) statements -> *
+		  statements -> * statements stmnt terminator
+		  block -> LBRACE * statements RBRACE
+
+                    statements shift  75
+                     {default} reduce 1
+
+State 75:
+		  statements -> statements * stmnt terminator
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  block -> LBRACE statements * RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                        RBRACE shift  76
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  2
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 76:
+	 (25) block -> LBRACE statements RBRACE *
+
+                     {default} reduce 25
+
+State 77:
+		  classdef -> CLASS * IDENT inheritence LBRACE classbody RBRACE
+
+                         IDENT shift  78
+
+State 78:
+		  classdef -> CLASS IDENT * inheritence LBRACE classbody RBRACE
+	 (27) inheritence -> *
+		  inheritence -> * COLON ancestry
+
+                        LBRACE reduce 27
+                         COLON shift  83
+                   inheritence shift  79
+
+State 79:
+		  classdef -> CLASS IDENT inheritence * LBRACE classbody RBRACE
+
+                        LBRACE shift  80
+
+State 80:
+		  classdef -> CLASS IDENT inheritence LBRACE * classbody RBRACE
+	 (33) classbody -> *
+
+                        RBRACE reduce 33
+                     classbody shift  81
+
+State 81:
+		  classdef -> CLASS IDENT inheritence LBRACE classbody * RBRACE
+
+                        RBRACE shift  82
+
+State 82:
+	 (26) classdef -> CLASS IDENT inheritence LBRACE classbody RBRACE *
+
+                     {default} reduce 26
+
+State 83:
+		  inheritence -> COLON * ancestry
+	 (29) ancestry -> *
+		  ancestry -> * ancestry ancestor
+
+                      ancestry shift  84
+                     {default} reduce 29
+
+State 84:
+	 (28) inheritence -> COLON ancestry *
+		  ancestry -> ancestry * ancestor
+		  ancestor -> * IDENT
+		  ancestor -> * IDENT LPAREN IDENT RPAREN
+
+                        LBRACE reduce 28
+                         IDENT shift  86
+                      ancestor shift  85
+
+State 85:
+	 (30) ancestry -> ancestry ancestor *
+
+                     {default} reduce 30
+
+State 86:
+	 (31) ancestor -> IDENT *
+		  ancestor -> IDENT * LPAREN IDENT RPAREN
+
+                        LPAREN shift  87
+                     {default} reduce 31
+
+State 87:
+		  ancestor -> IDENT LPAREN * IDENT RPAREN
+
+                         IDENT shift  88
+
+State 88:
+		  ancestor -> IDENT LPAREN IDENT * RPAREN
+
+                        RPAREN shift  89
+
+State 89:
+	 (32) ancestor -> IDENT LPAREN IDENT RPAREN *
+
+                     {default} reduce 32
+
+State 90:
+		  interfacedef -> INTERFACE * IDENT inheritence LBRACE classbody RBRACE
+
+                         IDENT shift  91
+
+State 91:
+	 (27) inheritence -> *
+		  inheritence -> * COLON ancestry
+		  interfacedef -> INTERFACE IDENT * inheritence LBRACE classbody RBRACE
+
+                        LBRACE reduce 27
+                         COLON shift  83
+                   inheritence shift  92
+
+State 92:
+		  interfacedef -> INTERFACE IDENT inheritence * LBRACE classbody RBRACE
+
+                        LBRACE shift  93
+
+State 93:
+	 (33) classbody -> *
+		  interfacedef -> INTERFACE IDENT inheritence LBRACE * classbody RBRACE
+
+                        RBRACE reduce 33
+                     classbody shift  94
+
+State 94:
+		  interfacedef -> INTERFACE IDENT inheritence LBRACE classbody * RBRACE
+
+                        RBRACE shift  95
+
+State 95:
+	 (34) interfacedef -> INTERFACE IDENT inheritence LBRACE classbody RBRACE *
+
+                     {default} reduce 34
+
+State 96:
+		  mixindef -> MIXIN * IDENT inheritence LBRACE classbody RBRACE
+
+                         IDENT shift  97
+
+State 97:
+	 (27) inheritence -> *
+		  inheritence -> * COLON ancestry
+		  mixindef -> MIXIN IDENT * inheritence LBRACE classbody RBRACE
+
+                        LBRACE reduce 27
+                         COLON shift  83
+                   inheritence shift  98
+
+State 98:
+		  mixindef -> MIXIN IDENT inheritence * LBRACE classbody RBRACE
+
+                        LBRACE shift  99
+
+State 99:
+	 (33) classbody -> *
+		  mixindef -> MIXIN IDENT inheritence LBRACE * classbody RBRACE
+
+                        RBRACE reduce 33
+                     classbody shift  100
+
+State 100:
+		  mixindef -> MIXIN IDENT inheritence LBRACE classbody * RBRACE
+
+                        RBRACE shift  101
+
+State 101:
+	 (35) mixindef -> MIXIN IDENT inheritence LBRACE classbody RBRACE *
+
+                     {default} reduce 35
+
+State 102:
+		  declaration -> IDENT * IDENT initializer
+		  expr -> IDENT * LPAREN args RPAREN
+	 (82) expr -> IDENT *
+
+                        LPAREN shift  64
+                         IDENT shift  103
+                     {default} reduce 82
+
+State 103:
+		  declaration -> IDENT IDENT * initializer
+		  initializer -> * EQUALS expr
+		  initializer -> * LPAREN args RPAREN
+
+                        LPAREN shift  107
+                        EQUALS shift  105
+                   initializer shift  104
+
+State 104:
+	 (36) declaration -> IDENT IDENT initializer *
+
+                     {default} reduce 36
+
+State 105:
+		  initializer -> EQUALS * expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  106
+
+State 106:
+	 (41) initializer -> EQUALS expr *
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 41
+
+State 107:
+		  initializer -> LPAREN * args RPAREN
+	 (43) args -> *
+		  args -> * arglist
+		  arglist -> * expr
+		  arglist -> * arglist COMMA expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                        RPAREN reduce 43
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  65
+                          args shift  108
+                       arglist shift  46
+
+State 108:
+		  initializer -> LPAREN args * RPAREN
+
+                        RPAREN shift  109
+
+State 109:
+	 (42) initializer -> LPAREN args RPAREN *
+
+                     {default} reduce 42
+
+State 110:
+		  declaration -> STATIC * IDENT IDENT initializer
+		  declaration -> STATIC * CONST IDENT IDENT initializer
+
+                         CONST shift  114
+                         IDENT shift  111
+
+State 111:
+		  declaration -> STATIC IDENT * IDENT initializer
+
+                         IDENT shift  112
+
+State 112:
+		  declaration -> STATIC IDENT IDENT * initializer
+		  initializer -> * EQUALS expr
+		  initializer -> * LPAREN args RPAREN
+
+                        LPAREN shift  107
+                        EQUALS shift  105
+                   initializer shift  113
+
+State 113:
+	 (37) declaration -> STATIC IDENT IDENT initializer *
+
+                     {default} reduce 37
+
+State 114:
+		  declaration -> STATIC CONST * IDENT IDENT initializer
+
+                         IDENT shift  115
+
+State 115:
+		  declaration -> STATIC CONST IDENT * IDENT initializer
+
+                         IDENT shift  116
+
+State 116:
+		  declaration -> STATIC CONST IDENT IDENT * initializer
+		  initializer -> * EQUALS expr
+		  initializer -> * LPAREN args RPAREN
+
+                        LPAREN shift  107
+                        EQUALS shift  105
+                   initializer shift  117
+
+State 117:
+	 (40) declaration -> STATIC CONST IDENT IDENT initializer *
+
+                     {default} reduce 40
+
+State 118:
+		  declaration -> CONST * IDENT IDENT initializer
+		  declaration -> CONST * STATIC IDENT IDENT initializer
+
+                        STATIC shift  122
+                         IDENT shift  119
+
+State 119:
+		  declaration -> CONST IDENT * IDENT initializer
+
+                         IDENT shift  120
+
+State 120:
+		  declaration -> CONST IDENT IDENT * initializer
+		  initializer -> * EQUALS expr
+		  initializer -> * LPAREN args RPAREN
+
+                        LPAREN shift  107
+                        EQUALS shift  105
+                   initializer shift  121
+
+State 121:
+	 (38) declaration -> CONST IDENT IDENT initializer *
+
+                     {default} reduce 38
+
+State 122:
+		  declaration -> CONST STATIC * IDENT IDENT initializer
+
+                         IDENT shift  123
+
+State 123:
+		  declaration -> CONST STATIC IDENT * IDENT initializer
+
+                         IDENT shift  124
+
+State 124:
+		  declaration -> CONST STATIC IDENT IDENT * initializer
+		  initializer -> * EQUALS expr
+		  initializer -> * LPAREN args RPAREN
+
+                        LPAREN shift  107
+                        EQUALS shift  105
+                   initializer shift  125
+
+State 125:
+	 (39) declaration -> CONST STATIC IDENT IDENT initializer *
+
+                     {default} reduce 39
+
+State 126:
+		  ifstmnt -> IF * LPAREN expr RPAREN stmnt
+		  ifstmnt -> IF * LPAREN expr RPAREN stmnt ELSE stmnt
+
+                        LPAREN shift  127
+
+State 127:
+		  ifstmnt -> IF LPAREN * expr RPAREN stmnt
+		  ifstmnt -> IF LPAREN * expr RPAREN stmnt ELSE stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  128
+
+State 128:
+		  ifstmnt -> IF LPAREN expr * RPAREN stmnt
+		  ifstmnt -> IF LPAREN expr * RPAREN stmnt ELSE stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  129
+
+State 129:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> IF LPAREN expr RPAREN * stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  ifstmnt -> IF LPAREN expr RPAREN * stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  130
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 130:
+	 (48) ifstmnt -> IF LPAREN expr RPAREN stmnt *
+		  ifstmnt -> IF LPAREN expr RPAREN stmnt * ELSE stmnt
+
+                     {default} reduce 48
+
+State 131:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  ifstmnt -> IF LPAREN expr RPAREN stmnt ELSE * stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  132
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 132:
+	 (49) ifstmnt -> IF LPAREN expr RPAREN stmnt ELSE stmnt *
+
+                     {default} reduce 49
+
+State 133:
+		  switchstmnt -> SWITCH * LPAREN expr RPAREN LBRACE cases RBRACE
+
+                        LPAREN shift  134
+
+State 134:
+		  switchstmnt -> SWITCH LPAREN * expr RPAREN LBRACE cases RBRACE
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  135
+
+State 135:
+		  switchstmnt -> SWITCH LPAREN expr * RPAREN LBRACE cases RBRACE
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  136
+
+State 136:
+		  switchstmnt -> SWITCH LPAREN expr RPAREN * LBRACE cases RBRACE
+
+                        LBRACE shift  137
+
+State 137:
+		  switchstmnt -> SWITCH LPAREN expr RPAREN LBRACE * cases RBRACE
+	 (51) cases -> *
+		  cases -> * cases CASE expr terminator statements
+		  cases -> * cases CASE terminator statements
+
+                         cases shift  138
+                     {default} reduce 51
+
+State 138:
+		  switchstmnt -> SWITCH LPAREN expr RPAREN LBRACE cases * RBRACE
+		  cases -> cases * CASE expr terminator statements
+		  cases -> cases * CASE terminator statements
+
+                        RBRACE shift  139
+                          CASE shift  140
+
+State 139:
+	 (50) switchstmnt -> SWITCH LPAREN expr RPAREN LBRACE cases RBRACE *
+
+                     {default} reduce 50
+
+State 140:
+		  terminator -> * NEWLINE
+		  terminator -> * SEMICOLON
+		  cases -> cases CASE * expr terminator statements
+		  cases -> cases CASE * terminator statements
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                       NEWLINE shift  4
+                     SEMICOLON shift  5
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                    terminator shift  203
+                          expr shift  141
+
+State 141:
+		  terminator -> * NEWLINE
+		  terminator -> * SEMICOLON
+		  cases -> cases CASE expr * terminator statements
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                       NEWLINE shift  4
+                     SEMICOLON shift  5
+                    terminator shift  142
+
+State 142:
+	  (1) statements -> *
+		  statements -> * statements stmnt terminator
+		  cases -> cases CASE expr terminator * statements
+
+                    statements shift  143
+                     {default} reduce 1
+
+State 143:
+		  statements -> statements * stmnt terminator
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+	 (52) cases -> cases CASE expr terminator statements *
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  2
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+                     {default} reduce 52
+
+State 144:
+		  forstmnt -> FOR * LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> FOR * LPAREN expr COLON expr RPAREN stmnt
+
+                        LPAREN shift  145
+
+State 145:
+		  forstmnt -> FOR LPAREN * expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> FOR LPAREN * expr COLON expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  146
+
+State 146:
+		  forstmnt -> FOR LPAREN expr * SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> FOR LPAREN expr * COLON expr RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     SEMICOLON shift  147
+                         COLON shift  199
+
+State 147:
+		  forstmnt -> FOR LPAREN expr SEMICOLON * expr SEMICOLON expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  148
+
+State 148:
+		  forstmnt -> FOR LPAREN expr SEMICOLON expr * SEMICOLON expr RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     SEMICOLON shift  149
+
+State 149:
+		  forstmnt -> FOR LPAREN expr SEMICOLON expr SEMICOLON * expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  150
+
+State 150:
+		  forstmnt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr * RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  151
+
+State 151:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN * stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  152
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 152:
+	 (54) forstmnt -> FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt *
+
+                     {default} reduce 54
+
+State 153:
+		  foreachstmnt -> FOREACH * LPAREN expr COLON expr RPAREN stmnt
+
+                        LPAREN shift  154
+
+State 154:
+		  foreachstmnt -> FOREACH LPAREN * expr COLON expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  155
+
+State 155:
+		  foreachstmnt -> FOREACH LPAREN expr * COLON expr RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                         COLON shift  156
+
+State 156:
+		  foreachstmnt -> FOREACH LPAREN expr COLON * expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  157
+
+State 157:
+		  foreachstmnt -> FOREACH LPAREN expr COLON expr * RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  158
+
+State 158:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> FOREACH LPAREN expr COLON expr RPAREN * stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  159
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 159:
+	 (56) foreachstmnt -> FOREACH LPAREN expr COLON expr RPAREN stmnt *
+
+                     {default} reduce 56
+
+State 160:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  foreverstmnt -> FOREVER * stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  161
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 161:
+	 (57) foreverstmnt -> FOREVER stmnt *
+
+                     {default} reduce 57
+
+State 162:
+		  loopstmnt -> LOOP * LPAREN expr RPAREN stmnt
+
+                        LPAREN shift  163
+
+State 163:
+		  loopstmnt -> LOOP LPAREN * expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  164
+
+State 164:
+		  loopstmnt -> LOOP LPAREN expr * RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  165
+
+State 165:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  loopstmnt -> LOOP LPAREN expr RPAREN * stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  166
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 166:
+	 (58) loopstmnt -> LOOP LPAREN expr RPAREN stmnt *
+
+                     {default} reduce 58
+
+State 167:
+		  whilestmnt -> WHILE * LPAREN expr RPAREN stmnt
+
+                        LPAREN shift  168
+
+State 168:
+		  whilestmnt -> WHILE LPAREN * expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  169
+
+State 169:
+		  whilestmnt -> WHILE LPAREN expr * RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  170
+
+State 170:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  whilestmnt -> WHILE LPAREN expr RPAREN * stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  171
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 171:
+	 (59) whilestmnt -> WHILE LPAREN expr RPAREN stmnt *
+
+                     {default} reduce 59
+
+State 172:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  dowhilestmnt -> DO * stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  dountilstmnt -> DO * stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  173
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 173:
+		  dowhilestmnt -> DO stmnt * WHILE LPAREN expr RPAREN
+		  dountilstmnt -> DO stmnt * UNTIL LPAREN expr RPAREN
+
+                         WHILE shift  174
+                         UNTIL shift  178
+
+State 174:
+		  dowhilestmnt -> DO stmnt WHILE * LPAREN expr RPAREN
+
+                        LPAREN shift  175
+
+State 175:
+		  dowhilestmnt -> DO stmnt WHILE LPAREN * expr RPAREN
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  176
+
+State 176:
+		  dowhilestmnt -> DO stmnt WHILE LPAREN expr * RPAREN
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  177
+
+State 177:
+	 (60) dowhilestmnt -> DO stmnt WHILE LPAREN expr RPAREN *
+
+                     {default} reduce 60
+
+State 178:
+		  dountilstmnt -> DO stmnt UNTIL * LPAREN expr RPAREN
+
+                        LPAREN shift  179
+
+State 179:
+		  dountilstmnt -> DO stmnt UNTIL LPAREN * expr RPAREN
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  180
+
+State 180:
+		  dountilstmnt -> DO stmnt UNTIL LPAREN expr * RPAREN
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  181
+
+State 181:
+	 (62) dountilstmnt -> DO stmnt UNTIL LPAREN expr RPAREN *
+
+                     {default} reduce 62
+
+State 182:
+		  untilstmnt -> UNTIL * LPAREN expr RPAREN stmnt
+
+                        LPAREN shift  183
+
+State 183:
+		  untilstmnt -> UNTIL LPAREN * expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  184
+
+State 184:
+		  untilstmnt -> UNTIL LPAREN expr * RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  185
+
+State 185:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  untilstmnt -> UNTIL LPAREN expr RPAREN * stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  186
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 186:
+	 (61) untilstmnt -> UNTIL LPAREN expr RPAREN stmnt *
+
+                     {default} reduce 61
+
+State 187:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  trycatch -> TRY * stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  188
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 188:
+		  trycatch -> TRY stmnt * CATCH LPAREN stmnt RPAREN stmnt
+
+                         CATCH shift  189
+
+State 189:
+		  trycatch -> TRY stmnt CATCH * LPAREN stmnt RPAREN stmnt
+
+                        LPAREN shift  190
+
+State 190:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  trycatch -> TRY stmnt CATCH LPAREN * stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  191
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 191:
+		  trycatch -> TRY stmnt CATCH LPAREN stmnt * RPAREN stmnt
+
+                        RPAREN shift  192
+
+State 192:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  trycatch -> TRY stmnt CATCH LPAREN stmnt RPAREN * stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  193
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 193:
+	 (63) trycatch -> TRY stmnt CATCH LPAREN stmnt RPAREN stmnt *
+
+                     {default} reduce 63
+
+State 194:
+		  throwstmnt -> THROW * expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  195
+
+State 195:
+	 (64) throwstmnt -> THROW expr *
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 64
+
+State 196:
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> RETURN * retval
+	 (87) retval -> *
+		  retval -> * expr
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  197
+                        retval shift  198
+                     {default} reduce 87
+
+State 197:
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+	 (88) retval -> expr *
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                     {default} reduce 88
+
+State 198:
+	 (86) return -> RETURN retval *
+
+                     {default} reduce 86
+
+State 199:
+		  forstmnt -> FOR LPAREN expr COLON * expr RPAREN stmnt
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                         IDENT shift  63
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                          expr shift  200
+
+State 200:
+		  forstmnt -> FOR LPAREN expr COLON expr * RPAREN stmnt
+		  expr -> expr * PLUS expr
+		  expr -> expr * MINUS expr
+		  expr -> expr * STAR expr
+		  expr -> expr * SLASH expr
+		  expr -> expr * OR expr
+		  expr -> expr * AND expr
+		  expr -> expr * IS alternatives
+		  expr -> expr * DOT IDENT
+		  expr -> expr * DOT IDENT LPAREN args RPAREN
+		  expr -> expr * LBRACKET expr RBRACKET
+
+                            IS shift  39
+                          PLUS shift  27
+                         MINUS shift  29
+                            OR shift  35
+                          STAR shift  31
+                         SLASH shift  33
+                           AND shift  37
+                      LBRACKET shift  49
+                           DOT shift  43
+                        RPAREN shift  201
+
+State 201:
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  forstmnt -> FOR LPAREN expr COLON expr RPAREN * stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  202
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+
+State 202:
+	 (55) forstmnt -> FOR LPAREN expr COLON expr RPAREN stmnt *
+
+                     {default} reduce 55
+
+State 203:
+	  (1) statements -> *
+		  statements -> * statements stmnt terminator
+		  cases -> cases CASE terminator * statements
+
+                    statements shift  204
+                     {default} reduce 1
+
+State 204:
+		  statements -> statements * stmnt terminator
+		  stmnt -> * block
+		  stmnt -> * classdef
+		  stmnt -> * interfacedef
+		  stmnt -> * mixindef
+		  stmnt -> * declaration
+		  stmnt -> * assignstmnt
+		  stmnt -> * ifstmnt
+		  stmnt -> * switchstmnt
+		  stmnt -> * forstmnt
+		  stmnt -> * foreachstmnt
+		  stmnt -> * foreverstmnt
+		  stmnt -> * loopstmnt
+		  stmnt -> * whilestmnt
+		  stmnt -> * dowhilestmnt
+		  stmnt -> * untilstmnt
+		  stmnt -> * dountilstmnt
+		  stmnt -> * trycatch
+		  stmnt -> * throwstmnt
+		  stmnt -> * expr
+		  stmnt -> * return
+		  block -> * LBRACE statements RBRACE
+		  classdef -> * CLASS IDENT inheritence LBRACE classbody RBRACE
+		  interfacedef -> * INTERFACE IDENT inheritence LBRACE classbody RBRACE
+		  mixindef -> * MIXIN IDENT inheritence LBRACE classbody RBRACE
+		  declaration -> * IDENT IDENT initializer
+		  declaration -> * STATIC IDENT IDENT initializer
+		  declaration -> * CONST IDENT IDENT initializer
+		  declaration -> * CONST STATIC IDENT IDENT initializer
+		  declaration -> * STATIC CONST IDENT IDENT initializer
+		  assignstmnt -> * expr EQUALS expr
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt
+		  ifstmnt -> * IF LPAREN expr RPAREN stmnt ELSE stmnt
+		  switchstmnt -> * SWITCH LPAREN expr RPAREN LBRACE cases RBRACE
+	 (53) cases -> cases CASE terminator statements *
+		  forstmnt -> * FOR LPAREN expr SEMICOLON expr SEMICOLON expr RPAREN stmnt
+		  forstmnt -> * FOR LPAREN expr COLON expr RPAREN stmnt
+		  foreachstmnt -> * FOREACH LPAREN expr COLON expr RPAREN stmnt
+		  foreverstmnt -> * FOREVER stmnt
+		  loopstmnt -> * LOOP LPAREN expr RPAREN stmnt
+		  whilestmnt -> * WHILE LPAREN expr RPAREN stmnt
+		  dowhilestmnt -> * DO stmnt WHILE LPAREN expr RPAREN
+		  untilstmnt -> * UNTIL LPAREN expr RPAREN stmnt
+		  dountilstmnt -> * DO stmnt UNTIL LPAREN expr RPAREN
+		  trycatch -> * TRY stmnt CATCH LPAREN stmnt RPAREN stmnt
+		  throwstmnt -> * THROW expr
+		  expr -> * expr PLUS expr
+		  expr -> * expr MINUS expr
+		  expr -> * expr STAR expr
+		  expr -> * expr SLASH expr
+		  expr -> * MINUS expr
+		  expr -> * INT
+		  expr -> * FLOAT
+		  expr -> * LPAREN expr RPAREN
+		  expr -> * expr OR expr
+		  expr -> * expr AND expr
+		  expr -> * NOT expr
+		  expr -> * expr IS alternatives
+		  expr -> * TRUE
+		  expr -> * FALSE
+		  expr -> * IDENT LPAREN args RPAREN
+		  expr -> * IDENT
+		  expr -> * expr DOT IDENT
+		  expr -> * expr DOT IDENT LPAREN args RPAREN
+		  expr -> * expr LBRACKET expr RBRACKET
+		  return -> * RETURN retval
+
+                        STATIC shift  110
+                         CONST shift  118
+                         MINUS shift  52
+                        LPAREN shift  56
+                           NOT shift  59
+                            IF shift  126
+                        LBRACE shift  74
+                         CLASS shift  77
+                         IDENT shift  102
+                     INTERFACE shift  90
+                         MIXIN shift  96
+                        SWITCH shift  133
+                           FOR shift  144
+                       FOREACH shift  153
+                       FOREVER shift  160
+                          LOOP shift  162
+                         WHILE shift  167
+                            DO shift  172
+                         UNTIL shift  182
+                           TRY shift  187
+                         THROW shift  194
+                           INT shift  54
+                         FLOAT shift  55
+                          TRUE shift  61
+                         FALSE shift  62
+                        RETURN shift  196
+                         stmnt shift  2
+                         block shift  6
+                      classdef shift  7
+                  interfacedef shift  8
+                      mixindef shift  9
+                   declaration shift  10
+                   assignstmnt shift  11
+                       ifstmnt shift  12
+                   switchstmnt shift  13
+                      forstmnt shift  14
+                  foreachstmnt shift  15
+                  foreverstmnt shift  16
+                     loopstmnt shift  17
+                    whilestmnt shift  18
+                  dowhilestmnt shift  19
+                    untilstmnt shift  20
+                  dountilstmnt shift  21
+                      trycatch shift  22
+                    throwstmnt shift  23
+                          expr shift  24
+                        return shift  73
+                     {default} reduce 53
+
